@@ -1,0 +1,64 @@
+body {
+    background-repeat: no-repeat;
+    background-attachment: fixed;}
+
+.nadpis {
+    font-family: "Papyrus";
+    font-size: 80px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: white;}
+
+.text {
+    width: 550px;
+    height: 650px;
+    box-sizing: border-box;
+    margin-left: 80px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    resize: vertical;}
+
+.button {
+    background-color: white;
+    font-family: "Papyrus";
+    color: black;
+    border: none;
+    padding: 14px 16px;}
+
+.button:hover {
+    text-decoration: none;
+    color: black;
+    background-color: lightpink;
+    box-shadow: 0px 0px 50px 0px rgba(255,255,255,0.2), 0px 0px 50px 0px rgba(255,255,255,0.2);}
+
+.column {
+    float: left;
+    margin-right: 80px;
+    margin-left: auto;
+    object-position: center;}
+
+.column img {
+    height: 500px;
+    width: auto;
+    margin-left: 90px;
+    margin-top: 10px;
+    margin-bottom: 10px;}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;}
+
+.flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    flex-flow: row;
+    flex-wrap: wrap;}
+
+.flex > * {
+    width: 100%;}
+
+@media only screen and (min-width: 500px) {
+    .flex > * {
+        width: auto;}
