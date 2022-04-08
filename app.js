@@ -7,65 +7,26 @@ example.addEventListener("change", ()=>{
 	fr.onload = function(){
 		ves.innerHTML = fr.result;};})
 
-function stlacenie() {
-	document.getElementById("#ves").innerText = "
-	VES v1.6 500 500
-	CLEAR #F1B48C
-	FILL_RECT 225 -10 50 699 #000000
-	FILL_TRIANGLE 100 100.1 400 100 250 360 #FFFFFF
-	TIANGLE 100 400 250 140 400 400 3 #FFFFFF
-	CIRCLE 250 250 75 1 #000000
-	LINE 275 320 225 180 1 #000000
-	LINE 275 180 225 320 1 #000000
-	LINE 180 275 320 225 1 #000000
-	LINE 180 225 320 275 1 #000000
-	FILL_RECT 225 225 50 50 #F1B48C
-	LINE 250 215 285 250 3 #F1B48C
-	LINE 285 250 250 285 3 #F1B48C
-	LINE 250 285 215 250 3 #F1B48C
-	LINE 215 250 250 215 3 #F1B48C
-	FILL_CIRCLE 250 250 10 #000000
-	CIRCLE 250 250 20 3 #FFFFFF
-	FILL_CIRCLE 225 180 15 #000000
-	FILL_CIRCLE 275 180 15 #000000
-	FILL_CIRCLE 225 320 15 #000000
-	FILL_CIRCLE 275 320 15 #000000
-	FILL_CIRCLE 180 225 15 #000000
-	FILL_CIRCLE 320 225 15 #000000
-	FILL_CIRCLE 180 275 15 #000000
-	FILL_CIRCLE 320 275 15 #000000
-	FILL_CIRCLE 225 180 14 #F1B48C
-	FILL_CIRCLE 275 180 14 #F1B48C
-	FILL_CIRCLE 225 320 14 #F1B48C
-	FILL_CIRCLE 275 320 14 #F1B48C
-	FILL_CIRCLE 180 225 14 #F1B48C
-	FILL_CIRCLE 320 225 14 #F1B48C
-	FILL_CIRCLE 180 275 14 #F1B48C
-	FILL_CIRCLE 320 275 14 #F1B48C
-	FILL_CIRCLE 400 250 55 #000000
-	FILL_CIRCLE 435 250 55 #F1B48C
-	FILL_CIRCLE 100 250 55 #000000
-	FILL_CIRCLE 65 250 55 #F1B48C
-	RECT 10 10 480 480 2 #000000";}
+
 	
 
-// handleSubmit je funkcia, ktorá sa spustí keï sa bude ma odosla náš formulár
+// handleSubmit je funkcia, ktorï¿½ sa spustï¿½ keï¿½ sa bude maï¿½ odoslaï¿½ nï¿½ formulï¿½r
 
 function handleSubmit(e) {
 
-	e.preventDefault(); // zabráni vstavenému odosielaniu v prehliadaèi
+	e.preventDefault(); // zabrï¿½niï¿½ vstavenï¿½mu odosielaniu v prehliadaï¿½i
 
 
 	// this reprezentuje ten formular, ktory odosielame
 
-	const ves = this.querySelector("textarea").value; // Naèítame text z textarea
+	const ves = this.querySelector("textarea").value; // Naï¿½ï¿½tame text z textarea
 
-	const width = document.querySelector("section:nth-child(2)").clientWidth; // Naèítame aktuálnu šírku výstupného okna
+	const width = document.querySelector("section:nth-child(2)").clientWidth; // Naï¿½ï¿½tame aktuï¿½lnu ï¿½ï¿½rku vï¿½stupnï¿½ho okna
 
 
-	const formular = new URLSearchParams(); // Vytvoríme štruktúru, ktorá bude reprezentova formulár
+	const formular = new URLSearchParams(); // Vytvorï¿½me ï¿½truktï¿½ru, ktorï¿½ bude reprezentovaï¿½ formulï¿½r
 
-	formular.append('ves', ves); // Pridáme tam naše hodnoty
+	formular.append('ves', ves); // Pridï¿½me tam naï¿½e hodnoty
 
 	formular.append('width', width);
 
@@ -74,16 +35,16 @@ function handleSubmit(e) {
 
 	const method = this.method; // NAcitame povodnu metodu zadanu vo formulari
 
-	fetch(url, {method: method, body: formular}) // Urobíme HTTP požiadavku na náš server POST /render a formularom v tele požiadavky
+	fetch(url, {method: method, body: formular}) // Urobï¿½me HTTP poï¿½iadavku na nï¿½ server POST /render a formularom v tele poï¿½iadavky
  
-		.then((res) => res.blob()) // Dostali sme binárne dáta (blob)
+		.then((res) => res.blob()) // Dostali sme binï¿½rne dï¿½ta (blob)
 
 		.then((image) => {
 
-			document.querySelector("#output").src = URL.createObjectURL(image); // Nastavíme src našeho <img> na naèítaný obrázok
+			document.querySelector("#output").src = URL.createObjectURL(image); // Nastavï¿½me src naï¿½eho <img> na naï¿½ï¿½tanï¿½ obrï¿½zok
 
 		})
 }
-document.querySelector("form").addEventListener("submit", handleSubmit); // Nastavíme formulár, aby pri submit udalosti spustil našu handleSubmit funkciu
+document.querySelector("form").addEventListener("submit", handleSubmit); // Nastavï¿½me formulï¿½r, aby pri submit udalosti spustil naï¿½u handleSubmit funkciu
 
 
