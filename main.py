@@ -1,24 +1,26 @@
 from io import BytesIO
-from flask import Flask, send_file
+from flask import Flask, send_file, request, send_from_directory
+from ves import VESread
 app = Flask(__name__)
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+
 
 def serve_pil_image(img):
-	img_io = BytesIO()
-	img.save(img_io, 'JPEG', quality=70)
-	img_io.seek(0)
-	return send_file(img_io, mimetype='image/jpeg')
+  img_io = BytesIO()
+  img.save(img_io, 'PNG', quality=70)
+  img_io.seek(0)
+  return send_file(img_io, mimetype='image/png')
 
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def index(path):
+  if (len(path) == 0):
+      return send_from_directory('public', 'index.html')
+  return send_from_directory('public', path)
 
-from PIL import Image
-from random import randint
-
-@app.route('/')
-def hello_world():
-	width = 640
-	height = 400
-	img = Image.new('RGB', (width, height), (255,255,255))
-	farba = (randint(0, 255), randint(0, 255), randint(0, 255))
-	for x in range(200, 401):
-		for y in range(100, 201):
-			img.putpixel((x, y), farba)
-	return serve_pil_image(img)
+@app.route('/render', methods=['post'])
+def render():
+  ves = request.form.get('ves')
+  width = request.form.get('width')
+  render = VESread(width, ves) 
+  return serve_pil_image(render.img)
