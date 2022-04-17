@@ -17,6 +17,6 @@ function handleSubmit(e) {
 			document.querySelector("#output").src = URL.createObjectURL(image); // Nastavime src naseho <img> na nacitany obrazok
 		})
 }
-document.querySelector("form").addEventListener("submit", handleSubmit); // Nastavime formular, aby pri submit udalosti spustil nasu handleSubmit funkciu
+document.querySelector("#form").addEventListener("submit", handleSubmit); // Nastavime formular, aby pri submit udalosti spustil nasu handleSubmit funkciu
 
 
