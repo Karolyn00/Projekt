@@ -17,6 +17,11 @@ function handleSubmit(e) {
 			document.querySelector("#output").src = URL.createObjectURL(image); // Nastavime src naseho <img> na nacitany obrazok
 		})
 }
+
+function clear(e) {
+	e.preventDefault();
+	document.querySelector("textarea").value = "VES v1.6 500 500";
+	document.getElementById("output").src="https://c.tenor.com/nbB1q7b_TvcAAAAd/abstract.gif";}
+
 document.querySelector("form").addEventListener("submit", handleSubmit); // Nastavime formular, aby pri submit udalosti spustil nasu handleSubmit funkciu
-
-
+document.querySelector("#clear").addEventListener("click", clear)
