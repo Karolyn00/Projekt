@@ -5,7 +5,7 @@ function handleSubmit(e) {
 	e.preventDefault(); // zabranis vstavenemu odosielaniu v prehliadaci
 	// this reprezentuje ten formular, ktory odosielame
 	const ves = this.querySelector("textarea").value; // Nacitame text z textarea
-	const width = document.querySelector("section:nth-child(2)").clientWidth; // Nacitame aktualnu sirku vystupneho okna
+	const width = document.querySelector("div:nth-child(2)").clientWidth; // Nacitame aktualnu sirku vystupneho okna
 	const formular = new URLSearchParams(); // Vytvorime strukturu, ktoru bude reprezentovat formular
 	formular.append('ves', ves); // Pridame tam nase hodnoty
 	formular.append('width', width);
