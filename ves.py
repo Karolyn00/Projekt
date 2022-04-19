@@ -98,6 +98,8 @@ class VESread:
         num = ord(num) - 65 + 10
       else:
         num = int(num)
+      decimal += num * 16 ** index
+    return decimal
 
 
   def hexColor(self, color):
