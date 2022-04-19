@@ -140,7 +140,7 @@ class VESread:
         A,B=B,A 
       dx = B[0] - A[0] 
       dy = B[1] - A[1]
-      if (dy/dx) > 1:
+      if abs(dy/dx) > 1:
         for y in range(min(A[1], B[1]), max(A[1],B[1]) + 1):
           x = int((y - A[1] + (dy/dx) * A[0]) * (dx/dy))
           pixels.append((x, y))
@@ -177,9 +177,10 @@ class VESread:
           body.append((x,y))
     self.overenie(body,color)
 
-  def FILL_TRIANGLE(self, A, B, C, color):
-    def getY(point):
+  def getY(point):
       return point[1]
+    
+  def FILL_TRIANGLE(self, A, B, C, color):
     V = sorted([A, B, C], key=getY)
     left = self.linePixels(V[0], V[1]) + self.linePixels(V[1], V[2])
     right = self.linePixels(V[0], V[2])
